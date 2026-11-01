@@ -1,6 +1,6 @@
 app_name = "freight_charges"
 app_title = "Freight Charges"
-app_publisher = "sudhanshu"
+app_publisher = "Sudhanshu"
 app_description = "FC"
 app_email = "sudhanshubadole@gmail.com"
 app_license = "mit"

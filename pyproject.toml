@@ -1,7 +1,7 @@
 [project]
 name = "freight_charges"
 authors = [
-    { name = "sudhanshu", email = "sudhanshubadole@gmail.com"}
+    { name = "Sudhanshu", email = "sudhanshubadole@gmail.com"}
 ]
 description = "FC"
 requires-python = ">=3.14"
