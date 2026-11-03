@@ -1,0 +1,38 @@
+{
+ "actions": [],
+ "creation": "2026-11-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_items",
+  "purchase_freight_item",
+  "sales_freight_item",
+  "section_hsn",
+  "freight_hsn_mode",
+  "freight_sac",
+  "section_accounts",
+  "freight_expense_account"
+ ],
+ "fields": [
+  {"fieldname": "section_items", "fieldtype": "Section Break", "label": "Freight Items"},
+  {"fieldname": "purchase_freight_item", "fieldtype": "Link", "label": "Purchase Freight Item", "options": "Item", "reqd": 1, "description": "Non-stock service item used for generated freight rows on purchase documents."},
+  {"fieldname": "sales_freight_item", "fieldtype": "Link", "label": "Sales Freight Item", "options": "Item", "reqd": 1, "description": "Non-stock service item used for generated freight rows on sales documents."},
+  {"fieldname": "section_hsn", "fieldtype": "Section Break", "label": "HSN / SAC"},
+  {"fieldname": "freight_hsn_mode", "fieldtype": "Select", "label": "Freight HSN Mode", "options": "Inherit HSN\nFreight SAC", "default": "Inherit HSN", "reqd": 1},
+  {"fieldname": "freight_sac", "fieldtype": "Data", "label": "Freight SAC", "depends_on": "eval:doc.freight_hsn_mode=='Freight SAC'", "mandatory_depends_on": "eval:doc.freight_hsn_mode=='Freight SAC'"},
+  {"fieldname": "section_accounts", "fieldtype": "Section Break", "label": "Accounts"},
+  {"fieldname": "freight_expense_account", "fieldtype": "Link", "label": "Freight Expense Account", "options": "Account", "description": "Expense account for generated purchase freight rows. Leave empty to use the freight item's default."}
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-11-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Freight Charges",
+ "name": "Freight Settings",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

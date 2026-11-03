@@ -43,7 +43,12 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+	"Purchase Order": "public/js/freight.js",
+	"Purchase Invoice": "public/js/freight.js",
+	"Sales Order": "public/js/freight.js",
+	"Sales Invoice": "public/js/freight.js",
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -86,7 +91,8 @@ app_license = "mit"
 # ------------
 
 # before_install = "freight_charges.install.before_install"
-# after_install = "freight_charges.install.after_install"
+after_install = "freight_charges.setup.install.after_install"
+after_migrate = "freight_charges.setup.install.after_migrate"
 
 # Uninstallation
 # ------------
@@ -138,13 +144,14 @@ app_license = "mit"
 # ---------------
 # Hook on document methods and events
 
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+doc_events = {
+	"Purchase Order": {"before_validate": "freight_charges.freight_charges.events.before_validate", "after_mapping": "freight_charges.freight_charges.mapping.after_mapping"},
+	"Purchase Invoice": {"before_validate": "freight_charges.freight_charges.events.before_validate", "after_mapping": "freight_charges.freight_charges.mapping.after_mapping"},
+	"Sales Order": {"before_validate": "freight_charges.freight_charges.events.before_validate", "after_mapping": "freight_charges.freight_charges.mapping.after_mapping"},
+	"Sales Invoice": {"before_validate": "freight_charges.freight_charges.events.before_validate", "after_mapping": "freight_charges.freight_charges.mapping.after_mapping"},
+	"Purchase Receipt": {"after_mapping": "freight_charges.freight_charges.mapping.after_mapping"},
+	"Delivery Note": {"after_mapping": "freight_charges.freight_charges.mapping.after_mapping"},
+}
 
 # Scheduled Tasks
 # ---------------
